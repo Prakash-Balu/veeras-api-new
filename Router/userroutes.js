@@ -37,7 +37,7 @@ function sendOTP(phoneNumber, otp) {
   return client.messages
     .create({
       body: `Your OTP is: ${otp}`,
-      from: +14242065937,
+      from: twilioPhoneNumber,
       to: phoneNumber,
     })
     .then((message) => {
