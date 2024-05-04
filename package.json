@@ -44,6 +44,7 @@
     "swagger-ui-express": "^5.0.0",
     "twilio": "^3.70.0",
     "uuid": "^9.0.1",
+    "vercel": "^34.1.8",
     "yamljs": "^0.3.0"
   },
   "optionalDependencies": {
