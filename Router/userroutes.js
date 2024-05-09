@@ -441,7 +441,7 @@ module.exports = (io) => {
   });
 
   router.post("/acknowledgment", function(req, res) {
-    if (!!req.body.razorpay_payment_id && !!req.body.razorpay_order_id)
+    if (!!req.body.razorpay_payment_id && !!req.body.razorpay_order_id && !!req.body.razorpay_signature)
         res.redirect(environment.REDIRECT_URL +"/#/login");
     // } else if (req.body.code == 'PAYMENT_ERROR') {
     //     res.redirect("http://locahost:4200/#/payment/failure");

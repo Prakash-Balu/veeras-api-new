@@ -402,6 +402,9 @@
                 },
                 "razorpay_order_id": {
                   "example": "any"
+                },
+                "razorpay_signature": {
+                  "example": "any"
                 }
               }
             }
