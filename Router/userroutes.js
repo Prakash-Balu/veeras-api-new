@@ -18,6 +18,7 @@ const { v4: uuidv4 } = require("uuid");
 
 router.use(bodyParser.json());
 router.use(express.json());
+const Razorpay = require("razorpay");
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -415,6 +416,36 @@ module.exports = (io) => {
   const generateToken = () => {
     return Math.random().toString(36).substring(2, 10);
   };
+
+  router.post("/orderAPI", async (req, res) => {
+    // const orderData = await createOrderAPI();
+
+    var instance = new Razorpay({
+      key_id: process.env.RAZOR_PAY_KEY_ID,
+      key_secret: process.env.RAZOR_PAY_KEY_SECRET,
+    });
+
+    var options = {
+      amount: 50000,  // amount in the smallest currency unit
+      currency: "INR",
+      receipt: "order_rcptid_11"
+    };
+
+     await instance.orders.create(options, function(err, order) {
+      // console.log(order);
+      res
+      .status(200)
+      .json({success: true, orderData: order});
+    });
+  });
+
+  router.post("/acknowledgment", function(req, res) {
+    if (!!req.body.razorpay_payment_id && !!req.body.razorpay_order_id)
+        res.redirect(process.env.REDIRECT_URL +"/#/login");
+    // } else if (req.body.code == 'PAYMENT_ERROR') {
+    //     res.redirect("http://locahost:4200/#/payment/failure");
+    // }
+});
 
   router.route("/user").get(Controller.index);
   router
