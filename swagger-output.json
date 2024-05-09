@@ -5,7 +5,7 @@
     "description": "Version 2.0",
     "version": "1.0.0"
   },
-  "host": "veeras-login.onrender.com",
+  "host": "veeras-api-new.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -373,6 +373,43 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/orderAPI": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/acknowledgment": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "razorpay_payment_id": {
+                  "example": "any"
+                },
+                "razorpay_order_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
