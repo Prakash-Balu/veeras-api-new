@@ -15,6 +15,7 @@ const qrcode = require("qrcode");
 require("dotenv").config();
 const Token = require("../model/Token");
 const { v4: uuidv4 } = require("uuid");
+const environment = require('../etc/environment');
 
 router.use(bodyParser.json());
 router.use(express.json());
@@ -421,8 +422,8 @@ module.exports = (io) => {
     // const orderData = await createOrderAPI();
 
     var instance = new Razorpay({
-      key_id: process.env.RAZOR_PAY_KEY_ID,
-      key_secret: process.env.RAZOR_PAY_KEY_SECRET,
+      key_id: environment.RAZOR_PAY_KEY_ID,
+      key_secret: environment.RAZOR_PAY_KEY_SECRET,
     });
 
     var options = {
@@ -441,7 +442,7 @@ module.exports = (io) => {
 
   router.post("/acknowledgment", function(req, res) {
     if (!!req.body.razorpay_payment_id && !!req.body.razorpay_order_id)
-        res.redirect(process.env.REDIRECT_URL +"/#/login");
+        res.redirect(environment.REDIRECT_URL +"/#/login");
     // } else if (req.body.code == 'PAYMENT_ERROR') {
     //     res.redirect("http://locahost:4200/#/payment/failure");
     // }
