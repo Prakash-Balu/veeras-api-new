@@ -8,6 +8,7 @@ const qr = require("qrcode");
 const qrCode = require("qr-image");
 const crypto = require("crypto");
 const Controller = require("../controller/controllers");
+const AuthController = require("../controller/auth.controller");
 const { isValidToken } = require("../utils");
 const QRCode = require("../model/qrcode");
 const axios = require("axios");
@@ -448,6 +449,8 @@ module.exports = (io) => {
         //     res.redirect("http://locahost:4200/#/payment/failure");
         // }
     });
+
+    router.post("/adminLogin", AuthController.validateBeforeLogin, AuthController.login);
 
     router.route("/user").get(Controller.index);
     router
