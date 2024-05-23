@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
-const authenticationSchema = new Schema({
+const authenticationsSchema = new Schema({
     _id: {
         type: String,
         ref: "users",
@@ -11,6 +11,7 @@ const authenticationSchema = new Schema({
     phone_no: String,
     mailId: String,
     isFirstLogin: Boolean,
+    accessToken: { type: String, default: null },
     createdAt: Date,
     updatedAt: Date,
     lastActivity: Date,
@@ -18,4 +19,4 @@ const authenticationSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = mongoose.model("authentication", authenticationSchema);
+module.exports = mongoose.model("authentications", authenticationsSchema);

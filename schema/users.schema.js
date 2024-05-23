@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
-const userSchema = new Schema({
+const usersSchema = new Schema({
     _id: String,
     password: String,
     phone_no: String,
@@ -24,4 +24,4 @@ const userSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("users", usersSchema);
