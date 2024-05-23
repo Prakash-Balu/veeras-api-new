@@ -8,7 +8,7 @@ const authenticationsSchema = new Schema({
         ref: "users",
     },
     password: String,
-    phone_no: String,
+    phoneNumber: String,
     mailId: String,
     isFirstLogin: Boolean,
     accessToken: { type: String, default: null },
