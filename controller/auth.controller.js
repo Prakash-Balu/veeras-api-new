@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const { UserSchema, AuthenticationSchema } = require("../schema");
+const { UsersSchema, AuthenticationsSchema } = require("../schema");
 const { AuthService, UserService } = require("../service");
 const uuid = require("node-uuid");
 
@@ -14,10 +14,10 @@ class AuthController {
         console.log(req.body);
         const { mailId, password } = req.body;
 
-        const userData = await UserSchema.findOne({
+        const userData = await UsersSchema.findOne({
             mailId: { $regex: new RegExp("^" + mailId.toLowerCase(), "i") }
         });
-        const user = await AuthenticationSchema.findOne({
+        const user = await AuthenticationsSchema.findOne({
             mailId: { $regex: new RegExp("^" + mailId.toLowerCase(), "i") }
         })
         console.log(user);
