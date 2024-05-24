@@ -201,7 +201,6 @@ class AuthController {
     }
     async addReplies(req, res, next) {
         try {
-            console.log('-=-=-=->req',req.body)
             var replyObject = new RepliesSchema({
                 user_id : req.body.user_id,
                 comments_id : req.body.comments_id,
@@ -209,7 +208,6 @@ class AuthController {
                 reply_text : req.body.reply_text,
                 audio_path : req.body.audio_path,
             });
-            console.log('-=-=-=->',replyObject)
             const result = await replyObject.save();
             return res.json({
                 status: 200,
