@@ -121,7 +121,7 @@ class AuthController {
                     audio_path: 1,
                     createdAt: 1,
                     updatedAt: 1,
-                    userName: "$user.fullName",
+                    userName: "$user.userName",
                     role: "$user.role",
                    }
              }
@@ -159,7 +159,7 @@ class AuthController {
                         audio_path: 1,
                         createdAt: 1,
                         updatedAt: 1,
-                        userName: "$user.fullName",
+                        userName: "$user.userName",
                         role: "$user.role",
                        }
                  }
