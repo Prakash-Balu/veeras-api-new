@@ -460,5 +460,10 @@ module.exports = (io) => {
         .put(Controller.update)
         .delete(Controller.Delete);
 
+    router.route("/viewComment").get(AuthController.viewComment);
+    router.route("/comment").post(AuthController.addComment);
+    router.route("/reply").post(AuthController.addReplies);
+    
+
     return router;
 };

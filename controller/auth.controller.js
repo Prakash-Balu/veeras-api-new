@@ -1,9 +1,10 @@
 const express = require("express");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const { UserSchema, AuthenticationSchema } = require("../schema");
+const { CommentsSchema, UserSchema, AuthenticationSchema,RepliesSchema } = require("../schema");
 const { AuthService, UserService } = require("../service");
 const uuid = require("node-uuid");
+const db = require("mongoose");
 
 class AuthController {
 
@@ -94,6 +95,132 @@ class AuthController {
             });
         } catch (error) {
             throw new Error(error.message);
+        }
+    }
+
+    async viewComment(req, res, next) {
+        const commentData = await CommentsSchema.find({});
+        var threadObject = await CommentsSchema.aggregate([
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "user_id",
+                    foreignField: "_id",
+                    as: "user"
+                }
+            },
+            { $unwind: "$user" },
+            {
+                $project:
+                   {
+                    _id: 1,
+                    user_id: 1,
+                    segment_id: 1,
+                    seq_no: 1,
+                    comments_text:1,
+                    audio_path: 1,
+                    createdAt: 1,
+                    updatedAt: 1,
+                    userName: "$user.fullName",
+                    role: "$user.role",
+                   }
+             }
+        ]);
+
+        // console.log('====>',threadObject);
+        const finalObject = [];
+        const ObjectId = db.Types.ObjectId;
+        for (const val of threadObject) {
+            let id =  val._id.toString() ;
+            const query = [
+                {
+                    $match: {
+                        comments_id: id
+                      }
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "user_id",
+                        foreignField: "_id",
+                        as: "user"
+                    }
+                },
+                { $unwind: "$user" },
+                
+                {
+                    $project:
+                       {
+                        _id: 1,
+                        user_id: 1,
+                        comments_id: 1,
+                        seq_no: 1,
+                        reply_text:1,
+                        audio_path: 1,
+                        createdAt: 1,
+                        updatedAt: 1,
+                        userName: "$user.fullName",
+                        role: "$user.role",
+                       }
+                 }
+                ];
+            
+            var replyObject = await RepliesSchema.aggregate(query);
+            val.reply = replyObject;
+            finalObject.push(val);
+        }
+        return res.json({
+            status: 200,
+            message: "Successfully Login!!!.",
+            data: finalObject,
+        });
+
+    }
+    async addComment(req, res, next) {
+        try {
+            var comments = new CommentsSchema({
+                user_id : req.body.user_id,
+                segment_id : req.body.segment_id,
+                seq_no : req.body.seq_no,
+                comments_text : req.body.comments_text,
+                audio_path : req.body.audio_path,
+            });
+            
+            const result = await comments.save();
+            return res.json({
+                status: 200,
+                message: "Successfully added!!!.",
+                data: result,
+            });
+        } catch (error) {
+            return res.json({
+                status: 200,
+                message: error.message,
+            });
+        }
+    }
+    async addReplies(req, res, next) {
+        try {
+            console.log('-=-=-=->req',req.body)
+            var replyObject = new RepliesSchema({
+                user_id : req.body.user_id,
+                comments_id : req.body.comments_id,
+                seq_no : req.body.seq_no,
+                reply_text : req.body.reply_text,
+                audio_path : req.body.audio_path,
+            });
+            console.log('-=-=-=->',replyObject)
+            const result = await replyObject.save();
+            return res.json({
+                status: 200,
+                message: "Successfully added!!!.",
+                data: result,
+            });
+        } catch (error) {
+            return res.json({
+                status: 200,
+                message: error.message,
+            });
         }
     }
 }

@@ -3,10 +3,9 @@ const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
 const repliesSchema = new Schema({
-    _id: String,
+    // _id: String,
     user_id: {type: String, ref: "users"},
     comments_id: {type: String, ref: "comments"},
-    reply_id: {type: String, ref: "replies"},
     seq_no: String,
     reply_text: String,
     audio_path: String,
