@@ -1,0 +1,96 @@
+[{
+  "_id": "4",
+  "segment_name": "SEGMENT-4",
+  "segment_description": "SEGMENT-4",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "1",
+  "segment_name": "SEGMENT-1",
+  "segment_description": "SEGMENT-1",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "6",
+  "segment_name": "SEGMENT-6",
+  "segment_description": "SEGMENT-6",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "7",
+  "segment_name": "SEGMENT-7",
+  "segment_description": "SEGMENT-7",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "3",
+  "segment_name": "SEGMENT-3",
+  "segment_description": "SEGMENT-3",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "2",
+  "segment_name": "SEGMENT-2",
+  "segment_description": "SEGMENT-2",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "5",
+  "segment_name": "SEGMENT-5",
+  "segment_description": "SEGMENT-5",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+},
+{
+  "_id": "8",
+  "segment_name": "SEGMENT-8",
+  "segment_description": "SEGMENT-8",
+  "video_url": "",
+  "createdAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T09:29:16.930Z"
+  }
+}]

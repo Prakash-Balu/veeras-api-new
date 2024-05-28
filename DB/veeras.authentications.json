@@ -1,0 +1,34 @@
+[{
+  "_id": "1",
+  "password": "$2a$10$6l/OIZRC9sUjltEjhHnzUeS6tJIrSewTAUhpx4cx0blhKMJg40HZW",
+  "phoneNumber": "7845227090",
+  "mailId": "veeraeducation@gmail.com",
+  "isFirstLogin": true,
+  "createdAt": {
+    "$date": "2024-05-23T08:37:38.879Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T08:37:38.879Z"
+  },
+  "lastActivity": {
+    "$date": "2024-05-23T08:37:38.880Z"
+  },
+  "accessToken": null
+},
+{
+  "_id": "2",
+  "password": "$2a$10$y.Okjn1ZUW8X2K7Gx3fVhuFtM04L2lhOBOoZx9JXYFBJWG42gsyBq",
+  "phoneNumber": "9944026743",
+  "mailId": "tamil@gmail.com",
+  "isFirstLogin": true,
+  "createdAt": {
+    "$date": "2024-05-23T08:37:38.880Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T08:37:38.880Z"
+  },
+  "lastActivity": {
+    "$date": "2024-05-23T08:37:38.880Z"
+  },
+  "accessToken": null
+}]

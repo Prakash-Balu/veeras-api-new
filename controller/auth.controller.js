@@ -127,7 +127,7 @@ class AuthController {
              }
         ]);
 
-        // console.log('====>',threadObject);
+        console.log('====>',threadObject);
         const finalObject = [];
         const ObjectId = db.Types.ObjectId;
         for (const val of threadObject) {
@@ -135,7 +135,7 @@ class AuthController {
             const query = [
                 {
                     $match: {
-                        comments_id: id
+                        comment_id: id
                       }
                 },
                 {
@@ -153,7 +153,7 @@ class AuthController {
                        {
                         _id: 1,
                         user_id: 1,
-                        comments_id: 1,
+                        comment_id: 1,
                         seq_no: 1,
                         reply_text:1,
                         audio_path: 1,
@@ -203,7 +203,7 @@ class AuthController {
         try {
             var replyObject = new RepliesSchema({
                 user_id : req.body.user_id,
-                comments_id : req.body.comments_id,
+                comment_id : req.body.comment_id,
                 seq_no : req.body.seq_no,
                 reply_text : req.body.reply_text,
                 audio_path : req.body.audio_path,

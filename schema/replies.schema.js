@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const repliesSchema = new Schema({
     // _id: String,
     user_id: {type: String, ref: "users"},
-    comments_id: {type: String, ref: "comments"},
+    comment_id: {type: String, ref: "comments"},
     seq_no: String,
     reply_text: String,
     audio_path: String,
