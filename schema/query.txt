@@ -320,6 +320,41 @@ db.comments.insertMany([
     }
 ]);
 
+db.comments.insertMany([
+    {
+        _id: 4,
+        user_id: "3",
+        segment_id: "1",
+        seq_no: "1",
+        comments_text: "Hi sir. This is raja",
+        audio_path: "",
+        createdAt: new Date("2024-05-20T11:42:00Z"),
+        updatedAt: new Date("2024-05-20T11:42:00Z"),
+    },
+    {
+        _id: 5,
+        user_id: "3",
+        segment_id: "1",
+        seq_no: "2",
+        comments_text: "What is the steps to reproduce the steps",
+        audio_path: "",
+        createdAt: new Date("2024-05-20T13:08:00Z"),
+        updatedAt: new Date("2024-05-20T13:08:00Z"),
+    },
+    {
+        _id: 6,
+        user_id: "3",
+        segment_id: "1",
+        seq_no: "3",
+        comments_text: "I am learning hindi through your videos. Have one queries",
+        audio_path: "",
+        createdAt: new Date("2024-05-21T16:25:00Z"),
+        updatedAt: new Date("2024-05-21T16:25:00Z"),
+    }
+]);
+
+
+//Replies
 db.replies.insertMany([
     {
         _id: "1",
