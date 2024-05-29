@@ -463,7 +463,7 @@ module.exports = (io) => {
     router.route("/viewComment").get(AuthController.viewComment);
     router.route("/comment").post(AuthController.addComment);
     router.route("/reply").post(AuthController.addReplies);
-    
+    router.route("/userDetails").post(AuthController.getUserDetails);
 
     return router;
 };

@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const { CommentsSchema, UserSchema, AuthenticationSchema,RepliesSchema } = require("../schema");
+const { CommentsSchema, UsersSchema, AuthenticationSchema, RepliesSchema } = require("../schema");
 const { AuthService, UserService } = require("../service");
 const uuid = require("node-uuid");
 const db = require("mongoose");
@@ -15,7 +15,7 @@ class AuthController {
         console.log(req.body);
         const { mailId, password } = req.body;
 
-        const userData = await UserSchema.findOne({
+        const userData = await UsersSchema.findOne({
             mailId: { $regex: new RegExp("^" + mailId.toLowerCase(), "i") }
         });
         const user = await AuthenticationSchema.findOne({
@@ -112,31 +112,31 @@ class AuthController {
             { $unwind: "$user" },
             {
                 $project:
-                   {
+                {
                     _id: 1,
                     user_id: 1,
                     segment_id: 1,
                     seq_no: 1,
-                    comments_text:1,
+                    comments_text: 1,
                     audio_path: 1,
                     createdAt: 1,
                     updatedAt: 1,
                     userName: "$user.userName",
                     role: "$user.role",
-                   }
-             }
+                }
+            }
         ]);
 
-        console.log('====>',threadObject);
+        console.log('====>', threadObject);
         const finalObject = [];
         const ObjectId = db.Types.ObjectId;
         for (const val of threadObject) {
-            let id =  val._id.toString() ;
+            let id = val._id.toString();
             const query = [
                 {
                     $match: {
                         comment_id: id
-                      }
+                    }
                 },
                 {
                     $lookup: {
@@ -147,24 +147,24 @@ class AuthController {
                     }
                 },
                 { $unwind: "$user" },
-                
+
                 {
                     $project:
-                       {
+                    {
                         _id: 1,
                         user_id: 1,
                         comment_id: 1,
                         seq_no: 1,
-                        reply_text:1,
+                        reply_text: 1,
                         audio_path: 1,
                         createdAt: 1,
                         updatedAt: 1,
                         userName: "$user.userName",
                         role: "$user.role",
-                       }
-                 }
-                ];
-            
+                    }
+                }
+            ];
+
             var replyObject = await RepliesSchema.aggregate(query);
             val.reply = replyObject;
             finalObject.push(val);
@@ -179,13 +179,13 @@ class AuthController {
     async addComment(req, res, next) {
         try {
             var comments = new CommentsSchema({
-                user_id : req.body.user_id,
-                segment_id : req.body.segment_id,
-                seq_no : req.body.seq_no,
-                comments_text : req.body.comments_text,
-                audio_path : req.body.audio_path,
+                user_id: req.body.user_id,
+                segment_id: req.body.segment_id,
+                seq_no: req.body.seq_no,
+                comments_text: req.body.comments_text,
+                audio_path: req.body.audio_path,
             });
-            
+
             const result = await comments.save();
             return res.json({
                 status: 200,
@@ -202,17 +202,37 @@ class AuthController {
     async addReplies(req, res, next) {
         try {
             var replyObject = new RepliesSchema({
-                user_id : req.body.user_id,
-                comment_id : req.body.comment_id,
-                seq_no : req.body.seq_no,
-                reply_text : req.body.reply_text,
-                audio_path : req.body.audio_path,
+                user_id: req.body.user_id,
+                comment_id: req.body.comment_id,
+                seq_no: req.body.seq_no,
+                reply_text: req.body.reply_text,
+                audio_path: req.body.audio_path,
             });
             const result = await replyObject.save();
             return res.json({
                 status: 200,
                 message: "Successfully added!!!.",
                 data: result,
+            });
+        } catch (error) {
+            return res.json({
+                status: 200,
+                message: error.message,
+            });
+        }
+    }
+
+    async getUserDetails(req, res, next) {
+        try {
+            const { userId } = req.body;
+// console.log("userId:", userId);
+
+            const userData = await UsersSchema.findById( userId );
+            // console.log("userData:", userData);
+            return res.json({
+                status: 200,
+                message: "Get User Details!!!.",
+                data: userData,
             });
         } catch (error) {
             return res.json({
