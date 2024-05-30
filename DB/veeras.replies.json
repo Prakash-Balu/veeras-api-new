@@ -1,0 +1,148 @@
+[{
+  "_id": {
+    "$oid": "66560984dc94d3c059f3c706"
+  },
+  "user_id": "1",
+  "comment_id": "66560614077e34cb24295f1d",
+  "seq_no": "1",
+  "reply_text": "yes tamizh tell me what is the doubt",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-28T16:42:44.717Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T16:42:44.717Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66560b70dc94d3c059f3c740"
+  },
+  "user_id": "1",
+  "comment_id": "66560b11dc94d3c059f3c72e",
+  "seq_no": "1",
+  "reply_text": "Here is the steps to reprodcue the data",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-28T16:50:56.435Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T16:50:56.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6656129ddc94d3c059f3c76a"
+  },
+  "user_id": "2",
+  "comment_id": "66560614077e34cb24295f1d",
+  "seq_no": "2",
+  "reply_text": "sdcxzcxzczxcz",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-28T17:21:33.231Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T17:21:33.231Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665615c001e3e5b9273de70a"
+  },
+  "user_id": "1",
+  "comment_id": "66560614077e34cb24295f1d",
+  "seq_no": "3",
+  "reply_text": ";vxlvjkldr09uewfsdajfojsdokfjo",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-28T17:34:56.865Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T17:34:56.865Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6656194e01e3e5b9273de752"
+  },
+  "user_id": "2",
+  "comment_id": "66560614077e34cb24295f1d",
+  "seq_no": "4",
+  "reply_text": ".cxclksofiosilksalkldlspd",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-28T17:50:06.700Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T17:50:06.700Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66584739ff24371c11db124e"
+  },
+  "user_id": {
+    "$oid": "664760fcc035dbeec0d73fa3"
+  },
+  "comment_id": {
+    "$oid": "6658465aff24371c11db123f"
+  },
+  "seq_no": "1",
+  "reply_text": "Yes tell me prakash",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-30T09:30:33.556Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T09:30:33.556Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66584b131a75a96b3bbcc47b"
+  },
+  "user_id": {
+    "$oid": "6650c5ce74c3379810be1f50"
+  },
+  "comment_id": {
+    "$oid": "6658465aff24371c11db123f"
+  },
+  "seq_no": "2",
+  "reply_text": "what i nees to start for next steps",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-30T09:46:59.190Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T09:46:59.190Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66584d201a75a96b3bbcc4a0"
+  },
+  "user_id": {
+    "$oid": "664760fcc035dbeec0d73fa3"
+  },
+  "comment_id": {
+    "$oid": "66584cfa1a75a96b3bbcc496"
+  },
+  "seq_no": "1",
+  "reply_text": "Yes tamizh what doubts is it",
+  "audio_path": "",
+  "createdAt": {
+    "$date": "2024-05-30T09:55:44.836Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T09:55:44.836Z"
+  },
+  "__v": 0
+}]
