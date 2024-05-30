@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 
 const commentsSchema = new Schema({
     // _id:String,
-    user_id: {type: String, ref: "users"},
+    user_id: {type: Schema.Types.ObjectId, ref: "users"},
     segment_id: String,
     seq_no: String,
     comments_text: String,

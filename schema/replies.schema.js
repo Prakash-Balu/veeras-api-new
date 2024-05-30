@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 
 const repliesSchema = new Schema({
     // _id: String,
-    user_id: {type: String, ref: "users"},
-    comment_id: {type: String, ref: "comments"},
+    user_id: {type: Schema.Types.ObjectId, ref: "users"},
+    comment_id: {type: Schema.Types.ObjectId, ref: "comments"},
     seq_no: String,
     reply_text: String,
     audio_path: String,

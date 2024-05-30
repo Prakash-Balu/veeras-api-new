@@ -135,7 +135,7 @@ class AuthController {
             const query = [
                 {
                     $match: {
-                        comment_id: id
+                        comment_id: val._id
                     }
                 },
                 {
@@ -185,7 +185,6 @@ class AuthController {
                 comments_text: req.body.comments_text,
                 audio_path: req.body.audio_path,
             });
-
             const result = await comments.save();
             return res.json({
                 status: 200,

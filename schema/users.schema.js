@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
 const usersSchema = new Schema({
-    // _id: String,
+    _id: {type: Schema.Types.ObjectId},
     password: String,
     phone_no: String,
     whatsapp_no: String,
