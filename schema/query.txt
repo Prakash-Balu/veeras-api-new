@@ -390,3 +390,32 @@ db.replies.insertMany([
         updatedAt: new Date("2024-05-22T10:37:18Z"),
     }
 ]);
+
+//Location plan details
+db.location_details.insert({
+  "country_name": "India",
+    "country_code": "IN",
+    "phone_code": "+91",
+    "currency_code": "INR",
+    "currency_symbol": "₹",
+    "currency_name": "Rupees",
+    "currency_symbol_position": "left",
+    "localityLanguage": "Hindi",
+    "price": 830,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+});
+
+db.location_details.insertMany({
+  "country_name": "Singapore",
+    "country_code": "SG",
+    "phone_code": "+65",
+    "currency_code": "SGD",
+    "currency_symbol": "S$",
+    "currency_name": "Singapore Dollar",
+    "currency_symbol_position": "left",
+    "localityLanguage": "Malay",
+    "price": 830,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+});
