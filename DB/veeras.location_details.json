@@ -1,0 +1,294 @@
+[{
+  "_id": {
+    "$oid": "66688cf37ac54c8908229e1d"
+  },
+  "country_name": "India",
+  "country_code": "IN",
+  "phone_code": "+91",
+  "currency_code": "INR",
+  "country_flag": "🇮🇳",
+  "currency_symbol": "₹",
+  "currency_name": "INR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Hindi",
+  "createdAt": {
+    "$date": "2024-06-11T17:44:19.249Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-11T17:44:19.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66688d697ac54c8908229e21"
+  },
+  "country_name": "Singapore",
+  "country_code": "SG",
+  "phone_code": "+65",
+  "currency_code": "SGD",
+  "country_flag": "🇸🇬",
+  "currency_symbol": "$",
+  "currency_name": "SGD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Malay",
+  "createdAt": {
+    "$date": "2024-06-11T17:46:17.039Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-11T17:46:17.039Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66688ed77ac54c8908229e25"
+  },
+  "country_name": "Malaysia",
+  "country_code": "MY",
+  "phone_code": "+60",
+  "currency_code": "MYR",
+  "country_flag": "🇲🇾",
+  "currency_symbol": "RM",
+  "currency_name": "MYR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Malay",
+  "createdAt": {
+    "$date": "2024-06-11T17:52:23.389Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-11T17:52:23.389Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666994d35824a75026d450a4"
+  },
+  "country_name": "Sri Lanka",
+  "country_code": "LK",
+  "phone_code": "+94",
+  "currency_code": "LKR",
+  "country_flag": "🇱🇰",
+  "currency_symbol": "₹",
+  "currency_name": "LKR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "sinhala",
+  "createdAt": {
+    "$date": "2024-06-12T12:30:11.059Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-12T12:30:11.059Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a8155301ab65a61dab849"
+  },
+  "country_name": "Saudi Arabia",
+  "country_code": "SA",
+  "phone_code": "+966",
+  "currency_code": "SAR",
+  "country_flag": "🇸🇦",
+  "currency_symbol": "SAR",
+  "currency_name": "SAR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:19:17.696Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:19:17.696Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a81b4301ab65a61dab84d"
+  },
+  "country_name": "United Arab Emirates",
+  "country_code": "AE",
+  "phone_code": "+971",
+  "currency_code": "AED",
+  "country_flag": "🇦🇪",
+  "currency_symbol": "AED",
+  "currency_name": "AED",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:20:52.132Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:20:52.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a81ee301ab65a61dab851"
+  },
+  "country_name": "Kuwait",
+  "country_code": "KW",
+  "phone_code": "+965",
+  "currency_code": "KWD",
+  "country_flag": "🇰🇼",
+  "currency_symbol": "KWD",
+  "currency_name": "KWD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:21:50.162Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:21:50.162Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a82b4301ab65a61dab855"
+  },
+  "country_name": "Bahrain",
+  "country_code": "BH",
+  "phone_code": "+973",
+  "currency_code": "BHD",
+  "country_flag": "🇧🇭",
+  "currency_symbol": "BHD",
+  "currency_name": "BHD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:25:08.265Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:25:08.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a849f301ab65a61dab859"
+  },
+  "country_name": "Qatar",
+  "country_code": "QA",
+  "phone_code": "+974",
+  "currency_code": "QAR",
+  "country_flag": "🇶🇦",
+  "currency_symbol": "QAR",
+  "currency_name": "QAR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:33:19.208Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:33:19.208Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a84cb301ab65a61dab85d"
+  },
+  "country_name": "Oman",
+  "country_code": "OM",
+  "phone_code": "+968",
+  "currency_code": "OMR",
+  "country_flag": "🇴🇲",
+  "currency_symbol": "OMR",
+  "currency_name": "OMR",
+  "currency_symbol_position": "left",
+  "localityLanguage": "Arabic",
+  "createdAt": {
+    "$date": "2024-06-13T05:34:03.030Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:34:03.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a8574301ab65a61dab861"
+  },
+  "country_name": "United States",
+  "country_code": "US",
+  "phone_code": "+1",
+  "currency_code": "USD",
+  "country_flag": "🇺🇸",
+  "currency_symbol": "$",
+  "currency_name": "USD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "English",
+  "createdAt": {
+    "$date": "2024-06-13T05:36:52.771Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:36:52.771Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a85c9301ab65a61dab865"
+  },
+  "country_name": "Canada",
+  "country_code": "CA",
+  "phone_code": "+1",
+  "currency_code": "CAD",
+  "country_flag": "🇨🇦",
+  "currency_symbol": "$",
+  "currency_name": "CAD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "English",
+  "createdAt": {
+    "$date": "2024-06-13T05:38:17.719Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:38:17.719Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a8634301ab65a61dab869"
+  },
+  "country_name": "United Kingdom",
+  "country_code": "GB",
+  "phone_code": "+44",
+  "currency_code": "GBP",
+  "country_flag": "🇬🇧",
+  "currency_symbol": "£",
+  "currency_name": "GBP",
+  "currency_symbol_position": "left",
+  "localityLanguage": "English",
+  "createdAt": {
+    "$date": "2024-06-13T05:40:04.830Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:40:04.830Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666a86c9301ab65a61dab86d"
+  },
+  "country_name": "Australia",
+  "country_code": "AU",
+  "phone_code": "+61",
+  "currency_code": "AUD",
+  "country_flag": "🇦🇺",
+  "currency_symbol": "$",
+  "currency_name": "AUD",
+  "currency_symbol_position": "left",
+  "localityLanguage": "English",
+  "createdAt": {
+    "$date": "2024-06-13T05:42:33.147Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-13T05:42:33.147Z"
+  },
+  "__v": 0
+}]
