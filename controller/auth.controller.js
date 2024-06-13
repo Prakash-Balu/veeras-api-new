@@ -1,7 +1,14 @@
 const express = require("express");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const { CommentsSchema, UsersSchema, AuthenticationSchema, RepliesSchema } = require("../schema");
+const {
+    CommentsSchema,
+    UsersSchema,
+    AuthenticationSchema,
+    RepliesSchema,
+    LocationDetailsSchema,
+    PriceDetailsSchema,
+} = require("../schema");
 const { AuthService, UserService } = require("../service");
 const uuid = require("node-uuid");
 const db = require("mongoose");
@@ -99,8 +106,13 @@ class AuthController {
     }
 
     async viewComment(req, res, next) {
+        console.log(req.query)
+
+        const segmentId = req.query.segmentId;
+        console.log(segmentId)
         const commentData = await CommentsSchema.find({});
         var threadObject = await CommentsSchema.aggregate([
+            { $match: { segment_id: segmentId } },
             {
                 $lookup: {
                     from: "users",
@@ -224,9 +236,9 @@ class AuthController {
     async getUserDetails(req, res, next) {
         try {
             const { userId } = req.body;
-// console.log("userId:", userId);
+            // console.log("userId:", userId);
 
-            const userData = await UsersSchema.findById( userId );
+            const userData = await UsersSchema.findById(userId);
             // console.log("userData:", userData);
             return res.json({
                 status: 200,
@@ -234,6 +246,52 @@ class AuthController {
                 data: userData,
             });
         } catch (error) {
+            return res.json({
+                status: 200,
+                message: error.message,
+            });
+        }
+    }
+
+    async addLocation(req, res, next) {
+        // const session = await LocationDetailsSchema.startSession();
+        // session.startTransaction();
+        try {
+            // const opts = { session };
+            const locationDetails = req.body;
+
+            var locationDataObject = new LocationDetailsSchema({
+                country_name: locationDetails.countryName,
+                country_code: locationDetails.countryCode,
+                phone_code: locationDetails.phoneCode,
+                currency_code: locationDetails.currencyCode,
+                country_flag: locationDetails.countryFlag,
+                currency_symbol: locationDetails.currencySymbol,
+                currency_name: locationDetails.currencyName,
+                currency_symbol_position: locationDetails.currencySymbolPosition,
+                localityLanguage: locationDetails.localityLanguage,
+            });
+            const A = await locationDataObject.save();
+
+            var priceDataObject = new PriceDetailsSchema({
+                location_id: A._id,
+                month_fee: locationDetails.monthFee,
+                extendedplan1_fee: locationDetails.extendedPlan1Fee,
+                extendedplan2_fee: locationDetails.extendedPlan2Fee,
+            });
+
+            const B = await priceDataObject.save();
+            // await session.commitTransaction();
+            // session.endSession();
+
+            return res.json({
+                status: 200,
+                message: "Successfully added!!!.",
+                data: B,
+            });
+        } catch (error) {
+            // await session.abortTransaction();
+            // session.endSession();
             return res.json({
                 status: 200,
                 message: error.message,

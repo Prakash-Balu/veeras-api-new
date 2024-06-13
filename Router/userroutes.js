@@ -464,6 +464,7 @@ module.exports = (io) => {
     router.route("/comment").post(AuthController.addComment);
     router.route("/reply").post(AuthController.addReplies);
     router.route("/userDetails").post(AuthController.getUserDetails);
+    router.route("/addLocation").post(AuthController.addLocation);
 
     return router;
 };
