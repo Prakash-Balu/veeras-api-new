@@ -8,7 +8,7 @@
   "host": "veeras-api-new.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -364,19 +364,6 @@
         }
       }
     },
-    "/api/auth/token": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
     "/api/orderAPI": {
       "post": {
         "description": "",
@@ -413,6 +400,33 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/api/adminLogin": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mailId": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -489,6 +503,176 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/api/viewComment": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/comment": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "example": "any"
+                },
+                "segment_id": {
+                  "example": "any"
+                },
+                "seq_no": {
+                  "example": "any"
+                },
+                "comments_text": {
+                  "example": "any"
+                },
+                "audio_path": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reply": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "example": "any"
+                },
+                "comment_id": {
+                  "example": "any"
+                },
+                "seq_no": {
+                  "example": "any"
+                },
+                "reply_text": {
+                  "example": "any"
+                },
+                "audio_path": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/userDetails": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/addLocation": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "countryName": {
+                  "example": "any"
+                },
+                "countryCode": {
+                  "example": "any"
+                },
+                "phoneCode": {
+                  "example": "any"
+                },
+                "currencyCode": {
+                  "example": "any"
+                },
+                "countryFlag": {
+                  "example": "any"
+                },
+                "currencySymbol": {
+                  "example": "any"
+                },
+                "currencyName": {
+                  "example": "any"
+                },
+                "currencySymbolPosition": {
+                  "example": "any"
+                },
+                "localityLanguage": {
+                  "example": "any"
+                },
+                "monthFee": {
+                  "example": "any"
+                },
+                "extendedPlan1Fee": {
+                  "example": "any"
+                },
+                "extendedPlan2Fee": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
