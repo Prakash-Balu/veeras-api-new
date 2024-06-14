@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:4000/",
+      "url": "http://localhost:4000",
       "description": "Local Server"
     },
     {
@@ -603,21 +603,32 @@
     },
     "/api/userDetails": {
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "example": "any"
-                }
+        "description": "API for User Details",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "description": "id of the user table"
+                  }
+                },
+                "required": [
+                  "userId"
+                ]
               }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
