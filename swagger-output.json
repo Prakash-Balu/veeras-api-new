@@ -773,9 +773,45 @@
           }
         }
       }
+    },
+    "/api/getLocationPriceDetails": {
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "description": "Location Price details",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "countryCode": {
+                    "type": "string",
+                    "description": "Country code of the user"
+                  }
+                },
+                "required": [
+                  "countryCode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "tags": [
+    {
+      "name": "Location",
+      "description": "Location details APIs"
+    },
     {
       "name": "Auth",
       "description": "Auth management APIs"
@@ -783,10 +819,6 @@
     {
       "name": "Token",
       "description": "Token management APIs"
-    },
-    {
-      "name": "Location",
-      "description": "Location details APIs"
     },
     {
       "name": "User",

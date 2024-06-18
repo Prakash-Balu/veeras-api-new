@@ -105,7 +105,7 @@ class AuthController {
             throw new Error(error.message);
         }
     }
-    
+
     async viewComment(req, res, next) {
         const segmentId = req.query.segmentId;
         // console.log(segmentId)
