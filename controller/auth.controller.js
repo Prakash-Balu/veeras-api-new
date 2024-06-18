@@ -300,7 +300,14 @@ class AuthController {
 
     async getLocationPriceDetails(req, res, next) {
         try {
-            const { countryCode } = req.body;
+            let { countryCode } = req.body;
+
+            const isCountryExists = await LocationDetailsSchema.findOne({ currency_code : countryCode });
+            
+            if(isCountryExists == null) {
+                countryCode = "OT";
+            }
+
             const query = [
                 {
                     $match: {
