@@ -301,13 +301,13 @@ class AuthController {
     async getLocationPriceDetails(req, res, next) {
         try {
             let { countryCode } = req.body;
-
-            const isCountryExists = await LocationDetailsSchema.findOne({ currency_code : countryCode });
             
+            const isCountryExists = await LocationDetailsSchema.findOne({ country_code : countryCode });
+            // console.log("isCountryExists",isCountryExists)
             if(isCountryExists == null) {
                 countryCode = "OT";
             }
-
+            // console.log("countryCode",countryCode)
             const query = [
                 {
                     $match: {
