@@ -18,6 +18,9 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -28,6 +31,9 @@
     },
     "/api/": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -38,6 +44,9 @@
     },
     "/api/send": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -68,6 +77,9 @@
     },
     "/api/login": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -104,6 +116,9 @@
     },
     "/api/getUserDetails": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -137,6 +152,9 @@
     },
     "/api/scan": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -173,6 +191,9 @@
     },
     "/api/verify-secretkey": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -209,6 +230,9 @@
     },
     "/api/secretKey": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -225,6 +249,9 @@
     },
     "/api/location": {
       "post": {
+        "tags": [
+          "Location"
+        ],
         "description": "",
         "parameters": [
           {
@@ -261,6 +288,9 @@
     },
     "/api/logout": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -291,6 +321,9 @@
     },
     "/api/checkSession/{sessionId}": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -315,6 +348,9 @@
     },
     "/api/generateQR": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -328,6 +364,9 @@
     },
     "/api/generate-token": {
       "get": {
+        "tags": [
+          "Token"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -341,6 +380,9 @@
     },
     "/api/token": {
       "post": {
+        "tags": [
+          "Token"
+        ],
         "description": "",
         "parameters": [
           {
@@ -371,6 +413,9 @@
     },
     "/api/orderAPI": {
       "post": {
+        "tags": [
+          "Payment"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -381,6 +426,9 @@
     },
     "/api/acknowledgment": {
       "post": {
+        "tags": [
+          "Payment"
+        ],
         "description": "",
         "parameters": [
           {
@@ -411,6 +459,9 @@
     },
     "/api/adminLogin": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -438,6 +489,9 @@
     },
     "/api/user": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -448,6 +502,9 @@
     },
     "/api/user/{number}": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -464,6 +521,9 @@
         }
       },
       "put": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -480,6 +540,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -496,6 +559,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -514,6 +580,9 @@
     },
     "/api/viewComment": {
       "get": {
+        "tags": [
+          "Segment"
+        ],
         "description": "",
         "parameters": [
           {
@@ -531,6 +600,9 @@
     },
     "/api/comment": {
       "post": {
+        "tags": [
+          "Segment"
+        ],
         "description": "",
         "parameters": [
           {
@@ -567,6 +639,9 @@
     },
     "/api/reply": {
       "post": {
+        "tags": [
+          "Segment"
+        ],
         "description": "",
         "parameters": [
           {
@@ -603,6 +678,9 @@
     },
     "/api/userDetails": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "API for User Details",
         "produces": [
           "application/json"
@@ -638,6 +716,9 @@
     },
     "/api/addLocation": {
       "post": {
+        "tags": [
+          "Location"
+        ],
         "description": "",
         "parameters": [
           {
@@ -693,5 +774,27 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Auth management APIs"
+    },
+    {
+      "name": "Token",
+      "description": "Token management APIs"
+    },
+    {
+      "name": "Location",
+      "description": "Location details APIs"
+    },
+    {
+      "name": "User",
+      "description": "User management APIs"
+    },
+    {
+      "name": "Segment",
+      "description": "Segment management APIs"
+    }
+  ]
 }

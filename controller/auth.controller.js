@@ -1,4 +1,5 @@
 const express = require("express");
+
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const {
@@ -104,12 +105,10 @@ class AuthController {
             throw new Error(error.message);
         }
     }
-
+    
     async viewComment(req, res, next) {
-        console.log(req.query)
-
         const segmentId = req.query.segmentId;
-        console.log(segmentId)
+        // console.log(segmentId)
         const commentData = await CommentsSchema.find({});
         var threadObject = await CommentsSchema.aggregate([
             { $match: { segment_id: segmentId } },
@@ -294,6 +293,79 @@ class AuthController {
             // session.endSession();
             return res.json({
                 status: 200,
+                message: error.message,
+            });
+        }
+    }
+
+    async getLocationPriceDetails(req, res, next) {
+        try {
+            const { countryCode } = req.body;
+            const query = [
+                {
+                    $match: {
+                        country_code: countryCode
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        country_name: 1,
+                        country_code: 1,
+                        phone_code: 1,
+                        currency_code: 1,
+                        country_flag: 1,
+                        currency_symbol: 1,
+                        currency_name: 1,
+                        currency_symbol_position: 1,
+                        localityLanguage: 1,
+                        createdAt: 1,
+                        updatedAt: 1,
+                    }
+                }
+            ];
+
+            var threadObject = await LocationDetailsSchema.aggregate(query);
+
+            // console.log('====>', threadObject);
+            const finalObject = [];
+
+            for (const val of threadObject) {
+                let id = val._id.toString();
+                const query1 = [
+                    {
+                        $match: {
+                            location_id: val._id
+                        }
+                    },
+                    {
+                        $project:
+                        {
+                            _id: 1,
+                            location_id: 1,
+                            month_fee: 1,
+                            extendedplan1_fee: 1,
+                            extendedplan2_fee: 1,
+                            createdAt: 1,
+                            updatedAt: 1,
+                        }
+                    }
+                ];
+
+                var priceObject = await PriceDetailsSchema.aggregate(query1);
+                val.price = priceObject;
+                finalObject.push(val);
+            }
+
+            return res.json({
+                status: 200,
+                message: "Successfully Login!!!.",
+                data: finalObject,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
                 message: error.message,
             });
         }

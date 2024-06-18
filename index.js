@@ -29,10 +29,12 @@ const options = {
     },
     servers: [
       {
-        url1: "http://localhost:4000/"
+        url: "http://localhost:4000",
+        description: "Development Server"
       },
       {
-        url: "https://veeras-login.onrender.com"
+        url: "https://veeras-api-new.onrender.com",
+        description: "Production Server"
       }
     ]
   },

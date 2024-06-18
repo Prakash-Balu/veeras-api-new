@@ -450,6 +450,8 @@ module.exports = (io) => {
         // }
     });
 
+    
+
     router.post("/adminLogin", AuthController.validateBeforeLogin, AuthController.login);
 
     router.route("/user").get(Controller.index);
@@ -465,6 +467,7 @@ module.exports = (io) => {
     router.route("/reply").post(AuthController.addReplies);
     router.route("/userDetails").post(AuthController.getUserDetails);
     router.route("/addLocation").post(AuthController.addLocation);
+    router.route("/getLocationPriceDetails").post(AuthController.getLocationPriceDetails);
 
     return router;
 };
