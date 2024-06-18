@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
 const locationDetailsSchema = new Schema({
-    _id: {type: Schema.Types.ObjectId},
+    // _id: {type: Schema.Types.ObjectId},
     country_name: String,
     country_code: String,
     phone_code: String,
