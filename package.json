@@ -23,6 +23,7 @@
     "geoip-lite": "^1.4.9",
     "geolocation-utils": "^1.2.5",
     "http": "^0.0.1-security",
+    "http-proxy-middleware": "^3.0.0",
     "ipinfo": "^1.5.1",
     "jimp": "^0.22.10",
     "jsonwebtoken": "^9.0.2",

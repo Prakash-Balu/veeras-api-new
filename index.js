@@ -8,7 +8,8 @@ const apiRoutes = require("./Router/userroutes.js");
 const swaggerUi = require("swagger-ui-express");
 const mongodb = require("./config/mongodb.js");
 const Token = require('./model/Token');
-const { isValidToken } = require('./utils.js'); 
+const { isValidToken } = require('./utils.js');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
@@ -98,6 +99,15 @@ mongoose.connect(mongodb.url2, { useNewUrlParser: true, useUnifiedTopology: true
 // Routes
 app.get("/", (req, res) => res.send("Welcome to Signin Page"));
 app.use("/api", apiRoutes(io, activeQRCodes)); 
+
+// Proxy API requests
+app.use('/opencagedata', createProxyMiddleware({
+  target: 'https://api.opencagedata.com',
+  changeOrigin: true,
+  pathRewrite: {
+    '^/opencagedata': '',
+  },
+}));
 
 // Start the server
 const port = process.env.PORT || 4000;
