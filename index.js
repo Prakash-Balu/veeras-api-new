@@ -18,11 +18,7 @@ const activeQRCodes = new Map();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({
-  origin: "*",  // Specify your Angular app's URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Specify the allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization']  // Specify the allowed headers
-}));
+app.use(cors());
 
 // Swagger setup
 const options = {
