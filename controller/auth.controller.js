@@ -301,10 +301,10 @@ class AuthController {
     async getLocationPriceDetails(req, res, next) {
         try {
             let { countryCode } = req.body;
-            
-            const isCountryExists = await LocationDetailsSchema.findOne({ country_code : countryCode });
+
+            const isCountryExists = await LocationDetailsSchema.findOne({ country_code: countryCode });
             // console.log("isCountryExists",isCountryExists)
-            if(isCountryExists == null) {
+            if (isCountryExists == null) {
                 countryCode = "OT";
             }
             // console.log("countryCode",countryCode)
@@ -369,6 +369,53 @@ class AuthController {
                 status: 200,
                 message: "Successfully Login!!!.",
                 data: finalObject,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
+                message: error.message,
+            });
+        }
+    }
+
+    async getPriceList(req, res, next) {
+        try {
+            console.log("get price list method")
+            var threadObject = await PriceDetailsSchema.aggregate([
+                {
+                    $lookup: {
+                        from: "location_details",
+                        localField: "location_id",
+                        foreignField: "_id",
+                        as: "locationdtl"
+                    }
+                },
+                { $unwind: "$locationdtl" },
+                {
+                    $project:
+                    {
+                        _id: "$locationdtl._id",
+                        name: "$locationdtl.country_name",
+                        code: "$locationdtl.country_code",
+                        phone_code: "$locationdtl.phone_code",
+                        currency_code: "$locationdtl.currency_code",
+                        country_flag: "$locationdtl.country_flag",
+                        currency_symbol: "$locationdtl.currency_symbol",
+                        currency_name: "$locationdtl.currency_name",
+                        currency_symbol_position: "$locationdtl.currency_symbol_position",
+                        localityLanguage: "$locationdtl.localityLanguage",
+                        month_fee: 1,
+                        extendedplan1_fee: 1,
+                        extendedplan2_fee: 1,
+                    }
+                }
+            ]);
+
+            // console.log('====>', threadObject);
+            return res.json({
+                status: 200,
+                message: "Price List!!!.",
+                data: threadObject,
             });
         } catch (error) {
             return res.json({

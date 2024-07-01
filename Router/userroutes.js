@@ -468,6 +468,7 @@ module.exports = (io) => {
     router.route("/userDetails").post(AuthController.getUserDetails);
     router.route("/addLocation").post(AuthController.addLocation);
     router.route("/getLocationPriceDetails").post(AuthController.getLocationPriceDetails);
+    router.route("/getPriceList").get(AuthController.getPriceList);
 
     return router;
 };
