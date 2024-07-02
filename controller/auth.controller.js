@@ -394,7 +394,7 @@ class AuthController {
                 {
                     $project:
                     {
-                        _id: "$locationdtl._id",
+                        _id: 1,
                         name: "$locationdtl.country_name",
                         code: "$locationdtl.country_code",
                         phone_code: "$locationdtl.phone_code",
@@ -404,6 +404,7 @@ class AuthController {
                         currency_name: "$locationdtl.currency_name",
                         currency_symbol_position: "$locationdtl.currency_symbol_position",
                         localityLanguage: "$locationdtl.localityLanguage",
+                        location_id: "$locationdtl._id",
                         month_fee: 1,
                         extendedplan1_fee: 1,
                         extendedplan2_fee: 1,
@@ -416,6 +417,48 @@ class AuthController {
                 status: 200,
                 message: "Price List!!!.",
                 data: threadObject,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
+                message: error.message,
+            });
+        }
+    }
+
+    async updatePrice(req, res, next) {
+        try {
+            const priceDetails = req.body;
+            console.log("update price list method", priceDetails);
+
+            const locationUpdate = {
+                currency_symbol_position: priceDetails.currencySymbolPosition,
+                localityLanguage: priceDetails.localityLanguage,
+            }
+
+            const update1 = await LocationDetailsSchema.findByIdAndUpdate(
+                { _id: priceDetails.location_id },
+                { ...locationUpdate },
+                { new: true },
+            );
+
+            const priceUpdate = {
+                month_fee: priceDetails.monthFee,
+                extendedplan1_fee: priceDetails.extendedPlan1Fee,
+                extendedplan2_fee: priceDetails.extendedPlan2Fee,
+            }
+
+            const update2 = await PriceDetailsSchema.findByIdAndUpdate(
+                { _id: priceDetails._id },
+                { ...priceUpdate },
+                { new: true },
+            );
+
+            return res.json({
+                status: 200,
+                message: "price updated",
+                update1,
+                update2,
             });
         } catch (error) {
             return res.json({
