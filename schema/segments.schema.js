@@ -3,9 +3,9 @@ const { Schema } = mongoose;
 // const uuid = require("node-uuid");
 
 const segmentsSchema = new Schema({
-    _id: String,
-    segment_name: String,
-    segment_description: String,
+    // _id: String,
+    name: String,
+    description: String,
     video_url: String,
     createdAt: Date,
     updatedAt: Date,

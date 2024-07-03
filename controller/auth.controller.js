@@ -9,6 +9,7 @@ const {
     RepliesSchema,
     LocationDetailsSchema,
     PriceDetailsSchema,
+    SegmentsSchema,
 } = require("../schema");
 const { AuthService, UserService } = require("../service");
 const uuid = require("node-uuid");
@@ -459,6 +460,45 @@ class AuthController {
                 message: "price updated",
                 update1,
                 update2,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
+                message: error.message,
+            });
+        }
+    }
+
+    async getSegments(req, res, next) {
+        try {
+            console.log("get segment list method");
+
+            const segementsData = await SegmentsSchema.find();
+
+            return res.json({
+                status: 200,
+                message: "Segment List",
+                data:segementsData,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
+                message: error.message,
+            });
+        }
+    }
+
+    async addSegment(req, res, next) {
+        try {
+            const segementData = req.body;
+            console.log("get segment list method", segementData);
+
+            const result = await SegmentsSchema(segementData).save();
+
+            return res.json({
+                status: 200,
+                message: "Segment added successfully",
+                data:result,
             });
         } catch (error) {
             return res.json({

@@ -6,6 +6,7 @@ const PriceDetailsSchema = require('./location_price.schema');
 const UserPlansSchema = require('./user_plans.schema');
 const CommentsSchema = require('./comments.schema');
 const RepliesSchema = require('./replies.schema');
+const SegmentsSchema = require('./segments.schema');
 
 module.exports = {
     UsersSchema,
@@ -16,4 +17,5 @@ module.exports = {
     UserPlansSchema,
     CommentsSchema,
     RepliesSchema,
+    SegmentsSchema,
 };
