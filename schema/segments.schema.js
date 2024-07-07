@@ -7,6 +7,8 @@ const segmentsSchema = new Schema({
     name: String,
     description: String,
     video_url: String,
+    iconName: String,
+    routeUrl: String,
     createdAt: Date,
     updatedAt: Date,
 },
