@@ -22,6 +22,7 @@ router.use(bodyParser.json());
 router.use(express.json());
 const Razorpay = require("razorpay");
 const SegmentController = require("../controller/segment.controller");
+const PlanController = require("../controller/plan.controller");
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -476,6 +477,10 @@ module.exports = (io) => {
     router.route('/getSegments').get(SegmentController.getSegments);
     router.route('/addSegment').post(SegmentController.addSegment);
     router.route('/deleteSegment').post(SegmentController.deleteSegment);
+
+    //Plan Related Api
+    router.route('/addPlan').post(PlanController.addPlan);
+    router.route('/getPlanDetails').get(PlanController.getPlanDetails);
 
     return router;
 };
