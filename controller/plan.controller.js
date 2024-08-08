@@ -39,27 +39,6 @@ class PlanController {
             });
         }
     }
-
-    async deleteSegment(req, res, next) {
-        try {
-            const { segmentId } = req.body;
-            console.log("get segment list method", segmentId);
-
-            const result = await SegmentsSchema.findByIdAndDelete({ _id: segmentId });
-
-            return res.json({
-                status: 200,
-                message: "Segment deleted successfully",
-                data: result,
-            });
-
-        } catch (error) {
-            return res.json({
-                status: error.status,
-                message: error.message,
-            });
-        }
-    }
 }
 
 module.exports = new PlanController;
