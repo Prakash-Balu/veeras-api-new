@@ -13,6 +13,7 @@ const planDetailsSchema = new Schema({
         type: String,
         enum: ['Month(s)', 'Year(s)']
     },
+    monthsno: Number,
     createdAt: Date,
     updatedAt: Date,
 },
