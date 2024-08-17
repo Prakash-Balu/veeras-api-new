@@ -480,7 +480,8 @@ module.exports = (io) => {
 
     //Plan Related Api
     router.route('/addPlan').post(PlanController.addPlan);
-    router.route('/getPlanDetails').get(PlanController.getPlanDetails);
+    router.route('/getPlanDetails').get(PlanController.getPlanDetails);    
+    router.route('/updatePlan').post(PlanController.updatePlan);
 
     return router;
 };

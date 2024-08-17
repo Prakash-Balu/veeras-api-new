@@ -14,6 +14,7 @@ const planDetailsSchema = new Schema({
         enum: ['Month(s)', 'Year(s)']
     },
     monthsno: Number,
+    feeFieldName : String,
     createdAt: Date,
     updatedAt: Date,
 },

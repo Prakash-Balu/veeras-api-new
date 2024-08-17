@@ -39,6 +39,40 @@ class PlanController {
             });
         }
     }
+
+    async updatePlan(req, res, next) {
+        try {
+            const planDetails = req.body;
+            console.log("update plan method", planDetails);
+
+            const planUpdate = {
+                code: planDetails.code,
+                name: planDetails.name,
+                description: planDetails.description,
+                duration: planDetails.duration,
+                offer_duration: planDetails.offer_duration,
+                monthsno: planDetails.monthsno,
+                feeFieldName: planDetails.feeFieldName,
+            }
+
+            const update = await PlanDetailsSchema.findByIdAndUpdate(
+                { _id: planDetails._id },
+                { ...planUpdate },
+                { new: true },
+            );
+
+            return res.json({
+                status: 200,
+                message: "Plan updated",
+                update,
+            });
+        } catch (error) {
+            return res.json({
+                status: error.status,
+                message: error.message,
+            });
+        }
+    }
 }
 
 module.exports = new PlanController;
