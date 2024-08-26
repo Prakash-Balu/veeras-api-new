@@ -2,14 +2,13 @@
 
 const uuid = require("node-uuid");
 const bcrypt = require('bcryptjs');
-const { UserService } = require("../service");
 
 module.exports = function (mongoose, utils, constants) {
     
     const authCtrl = {};
     const Users = mongoose.model("users");
     const Authentications = mongoose.model("authentications");
-    const userService = require('../service/user.service')(mongoose, utils);
+    const userService = require('../service/user')(mongoose, utils);
 
     authCtrl.validateBeforeLogin = async (req, res, next) => {
         try {
