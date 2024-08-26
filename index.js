@@ -7,8 +7,8 @@ const { Server } = require("socket.io");
 const apiRoutes = require("./Router/userroutes.js");
 const swaggerUi = require("swagger-ui-express");
 const mongodb = require("./config/mongodb.js");
-const Token = require('./model/Token');
-const { isValidToken } = require('./utils.js');
+// const Token = require('./model/Token');
+const { isValidToken } = require('./util.js');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
 });
 
 // MongoDB connection
-mongoose.connect(mongodb.url2, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("MongoDB Connected Successfully");
   })

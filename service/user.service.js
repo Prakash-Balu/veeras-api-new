@@ -1,15 +1,19 @@
-const { UserSchema, AuthenticationSchema } = require("../schema");
+"use strict";
 
-class UserService {
-    async updateUserData(_id, userUpdate) {
+module.exports = function(mongoose, utils) {
+    const userService = {};    
+    const Authentications = mongoose.model("authentications");
+
+    userService.updateUserData = async(req, res, _id, userUpdate) => {
         try {
-            return await AuthenticationSchema.findByIdAndUpdate({ _id }, {
+            return await Authentications.findByIdAndUpdate({ _id }, {
                 ...userUpdate,
             });
-        } catch (error) {
-            throw new Error(error.message);
+        } catch (err) {
+            console.log(err);
+            return utils.sendErrorNew(req, res, 'BAD_REQUEST', err.message);
         }
     }
-}
 
-module.exports = new UserService();
+    return userService;
+}

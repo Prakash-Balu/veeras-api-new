@@ -5,7 +5,6 @@ const twilio = require("twilio");
 const User = require("../model/model");
 const Location = require("../model/Location");
 const qr = require("qrcode");
-const qrCode = require("qr-image");
 const crypto = require("crypto");
 const Controller = require("../controller/controllers");
 const AuthController = require("../controller/auth.controller");
