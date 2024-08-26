@@ -1,9 +1,9 @@
-const { AuthenticationSchema } = require("../schema");
+const { AuthenticationsSchema } = require("../schema");
 
 class UserService {
     async updateUserData(_id, userUpdate) {
         try {
-            return await AuthenticationSchema.findByIdAndUpdate({ _id }, {
+            return await AuthenticationsSchema.findByIdAndUpdate({ _id }, {
                 ...userUpdate,
             });
         } catch (error) {

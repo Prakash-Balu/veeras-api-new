@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const {
     CommentsSchema,
     UsersSchema,
-    AuthenticationSchema,
+    AuthenticationsSchema,
     RepliesSchema,
     LocationDetailsSchema,
     PriceDetailsSchema,
@@ -26,10 +26,10 @@ class AuthController {
         const userData = await UsersSchema.findOne({
             mailId: { $regex: new RegExp("^" + mailId.toLowerCase(), "i") }
         });
-        const user = await AuthenticationSchema.findOne({
+        const user = await AuthenticationsSchema.findOne({
             mailId: { $regex: new RegExp("^" + mailId.toLowerCase(), "i") }
         })
-        console.log(user);
+        // console.log(user);
 
         if (!userData) {
             return next(new Error("Invalid user for this system, check the administrator"));
@@ -83,8 +83,7 @@ class AuthController {
             const token = uuid.v4(); //AuthService.generateToken(authPayload);
             const refreshToken = uuid.v4(); //AuthService.generateRefreshToken(authPayload);
             const uId = userData._id.toString();
-            console.log(token);
-            console.log(refreshToken);
+            
             await UserService.updateUserData(uId, {
                 isFirstLogin: false,
                 updatedAt: new Date(),
