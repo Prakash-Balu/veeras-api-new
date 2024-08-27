@@ -2,7 +2,9 @@ module.exports = (mongoose, utils, constants) => {
     const express = require('express');
     const router = express.Router();
     const controller = require('../../controller/admin/location-price')(mongoose, utils, constants);
-    router.post("/addLocation", controller.addLocation);
+    router.post("/addLocationPrice", controller.addLocationPrice);
+    router.post("/updateLocationPrice", controller.updateLocationPrice);
+    router.post("/deleteLocationPrice", controller.deleteLocationPrice);
 
     return router;
 }
