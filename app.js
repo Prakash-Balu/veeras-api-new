@@ -28,13 +28,14 @@ module.exports = (async () => {
     const auth = require('./routes/auth')(mongoose, utils, constants);
     const user = require('./routes/user')(mongoose, utils, constants);
     const location = require('./routes/admin/location-price')(mongoose, utils, constants);
+    const userlocation = require('./routes/location-price')(mongoose, utils, constants);
 
     app.get('/', (req, res) => {
         res.status(200).json({ message: "Hello World" })
     })
     app.use('/auth', auth);
     app.use('/user', user);
-    app.use('/location', location);
+    app.use('/location', location, userlocation);
     
 
     // Serve Swagger documentation

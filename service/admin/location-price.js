@@ -3,13 +3,12 @@
 module.exports = function (mongoose, utils) {
 
     const locationPriceService = {};
-
+    const Location = mongoose.model("location_details");
+    const PriceDetails = mongoose.model("location_price");
 
     // Method to add a new location
     locationPriceService.addLocation = async (req, res, data) => {
         try {
-            const Location = mongoose.model("location_details");
-
             // Create a new location document
             const locationDataObject = new Location({
                 country_name: data.countryName,
@@ -34,7 +33,6 @@ module.exports = function (mongoose, utils) {
     // Method to update or add price details
     locationPriceService.addPrice = async (req, res, _id, data) => {
         try {
-            const PriceDetails = mongoose.model("location_price");
             const priceDataObject = new PriceDetails({
                 location_id: _id,
                 month_fee: data.monthFee,
@@ -52,7 +50,6 @@ module.exports = function (mongoose, utils) {
 
     locationPriceService.updateLocation = async (req, res, data) => {
         try {
-            const Location = mongoose.model("location_details");
             const locationUpdate = {
                 currency_symbol_position: data.currencySymbolPosition,
                 localityLanguage: data.localityLanguage,
@@ -71,7 +68,6 @@ module.exports = function (mongoose, utils) {
 
     locationPriceService.updatePrice = async (req, res, data) => {
         try {
-            const PriceDetails = mongoose.model("location_price");
             const priceUpdate = {
                 month_fee: data.monthFee,
                 extendedplan1_fee: data.extendedPlan1Fee,
@@ -91,8 +87,6 @@ module.exports = function (mongoose, utils) {
 
     locationPriceService.deleteLocation = async (_id) => {
         try {
-            const Location = mongoose.model("location_details");
-
             return await Location.findByIdAndDelete({_id: _id});
         } catch (err) {
             console.log(err);
@@ -102,9 +96,45 @@ module.exports = function (mongoose, utils) {
 
     locationPriceService.deletePrice = async (_id) => {
         try {
-            const PriceDetails = mongoose.model("location_price");
-
             return await PriceDetails.findByIdAndDelete({_id: _id});
+        } catch (err) {
+            console.log(err);
+            return utils.sendErrorNew(req, res, 'BAD_REQUEST', err.message);
+        }
+    };
+
+    locationPriceService.getLocationPriceList = async () => {
+        try {
+            return await PriceDetails.aggregate([
+                {
+                    $lookup: {
+                        from: "location_details",
+                        localField: "location_id",
+                        foreignField: "_id",
+                        as: "locationdtl"
+                    }
+                },
+                { $unwind: "$locationdtl" },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        name: "$locationdtl.country_name",
+                        code: "$locationdtl.country_code",
+                        phone_code: "$locationdtl.phone_code",
+                        currency_code: "$locationdtl.currency_code",
+                        country_flag: "$locationdtl.country_flag",
+                        currency_symbol: "$locationdtl.currency_symbol",
+                        currency_name: "$locationdtl.currency_name",
+                        currency_symbol_position: "$locationdtl.currency_symbol_position",
+                        localityLanguage: "$locationdtl.localityLanguage",
+                        location_id: "$locationdtl._id",
+                        month_fee: 1,
+                        extendedplan1_fee: 1,
+                        extendedplan2_fee: 1,
+                    }
+                }
+            ]);
         } catch (err) {
             console.log(err);
             return utils.sendErrorNew(req, res, 'BAD_REQUEST', err.message);
