@@ -24,7 +24,7 @@ module.exports = function(mongoose, utils) {
     commentsService.addReplies = async (req, res) => {
         try {
 
-            console.log(req.body);
+            // console.log(req.body);
             var replyObject = new Replies({
                 user_id: req.body.user_id,
                 comment_id: req.body.comment_id,
@@ -73,7 +73,7 @@ module.exports = function(mongoose, utils) {
             }
         ]);
 
-        console.log('====>', threadObject);
+        // console.log('====>', threadObject);
         const finalObject = [];
         const ObjectId = mongoose.Types.ObjectId;
         for (const val of threadObject) {
