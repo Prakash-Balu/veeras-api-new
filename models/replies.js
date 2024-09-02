@@ -5,6 +5,7 @@ module.exports = function (mongoose) {
 
     const repliesSchema = new Schema({
         // _id: String,
+        // _id: {type: Schema.Types.ObjectId},
         user_id: {type: Schema.Types.ObjectId, ref: "users"},
         comment_id: {type: Schema.Types.ObjectId, ref: "comments"},
         seq_no: String,

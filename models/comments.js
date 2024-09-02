@@ -5,6 +5,7 @@ module.exports = function (mongoose) {
 
     const commentsSchema = new Schema({
         // _id:String,
+        _id: {type: Schema.Types.ObjectId},
         user_id: {type: Schema.Types.ObjectId, ref: "users"},
         segment_id: String,
         seq_no: String,
