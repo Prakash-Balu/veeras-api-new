@@ -1,3 +1,48 @@
+    router.post("/orderAPI", async(req, res) => {
+        // const orderData = await createOrderAPI();
+
+        var instance = new Razorpay({
+            key_id: environment.RAZOR_PAY_KEY_ID,
+            key_secret: environment.RAZOR_PAY_KEY_SECRET,
+        });
+
+        var options = {
+            amount: 50000, // amount in the smallest currency unit
+            currency: "INR",
+            receipt: "order_rcptid_11"
+
+        };
+
+        await instance.orders.create(options, function(err, order) {
+            // console.log(order);
+            res
+                .status(200)
+                .json({ success: true, orderData: order });
+        });
+    });
+
+    router.post("/acknowledgment", function(req, res) {
+        if (!!req.body.razorpay_payment_id && !!req.body.razorpay_order_id && !!req.body.razorpay_signature)
+            res.redirect(environment.REDIRECT_URL + "/#/login");
+        // } else if (req.body.code == 'PAYMENT_ERROR') {
+        //     res.redirect("http://locahost:4200/#/payment/failure");
+        // }
+    });
+
+
+        //Segment Related Api
+        router.route('/getSegments').get(SegmentController.getSegments);
+        router.route('/addSegment').post(SegmentController.addSegment);
+        router.route('/deleteSegment').post(SegmentController.deleteSegment);
+    
+        //Plan Related Api
+        router.route('/addPlan').post(PlanController.addPlan);
+        router.route('/getPlanDetails').get(PlanController.getPlanDetails);    
+        router.route('/updatePlan').post(PlanController.updatePlan);
+
+
+
+        @@ -1,421 +0,0 @@
 //Segments
 db.segments.insertMany([
     {
