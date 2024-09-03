@@ -1,11 +1,11 @@
 "use strict";
 
-module.exports = function(mongoose, utils) {
-    const commentsService = {};    
+module.exports = function (mongoose, utils) {
+    const commentsService = {};
     const Comments = mongoose.model("comments");
     const Replies = mongoose.model("replies");
 
-    commentsService.addComment = async(req, res) => {
+    commentsService.addComment = async (req, res) => {
         try {
             var commentsObject = new Comments({
                 user_id: req.body.user_id,
@@ -41,49 +41,10 @@ module.exports = function(mongoose, utils) {
 
     commentsService.viewComment = async (req, res) => {
         try {
-
             const segmentId = req.query.segmentId;
-        // console.log(segmentId)
-        const commentData = await Comments.find({});
-        var threadObject = await Comments.aggregate([
-            { $match: { segment_id: segmentId } },
-            {
-                $lookup: {
-                    from: "users",
-                    localField: "user_id",
-                    foreignField: "_id",
-                    as: "user"
-                }
-            },
-            { $unwind: "$user" },
-            {
-                $project:
-                {
-                    _id: 1,
-                    user_id: 1,
-                    segment_id: 1,
-                    seq_no: 1,
-                    comments_text: 1,
-                    audio_path: 1,
-                    createdAt: 1,
-                    updatedAt: 1,
-                    userName: "$user.userName",
-                    role: "$user.role",
-                }
-            }
-        ]);
-
-        // console.log('====>', threadObject);
-        const finalObject = [];
-        const ObjectId = mongoose.Types.ObjectId;
-        for (const val of threadObject) {
-            let id = val._id.toString();
-            const query = [
-                {
-                    $match: {
-                        comment_id: val._id
-                    }
-                },
+            // const commentData = await Comments.find({});
+            var threadObject = await Comments.aggregate([
+                { $match: { segment_id: segmentId } },
                 {
                     $lookup: {
                         from: "users",
@@ -93,15 +54,14 @@ module.exports = function(mongoose, utils) {
                     }
                 },
                 { $unwind: "$user" },
-
                 {
                     $project:
                     {
                         _id: 1,
                         user_id: 1,
-                        comment_id: 1,
+                        segment_id: 1,
                         seq_no: 1,
-                        reply_text: 1,
+                        comments_text: 1,
                         audio_path: 1,
                         createdAt: 1,
                         updatedAt: 1,
@@ -109,13 +69,51 @@ module.exports = function(mongoose, utils) {
                         role: "$user.role",
                     }
                 }
-            ];
+            ]);
 
-            var replyObject = await Replies.aggregate(query);
-            val.reply = replyObject;
-            finalObject.push(val);
-        }
-        return finalObject;
+            // console.log('====>', threadObject);
+            const finalObject = [];
+            const ObjectId = mongoose.Types.ObjectId;
+            for (const val of threadObject) {
+                let id = val._id.toString();
+                const query = [
+                    {
+                        $match: {
+                            comment_id: val._id
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: "users",
+                            localField: "user_id",
+                            foreignField: "_id",
+                            as: "user"
+                        }
+                    },
+                    { $unwind: "$user" },
+
+                    {
+                        $project:
+                        {
+                            _id: 1,
+                            user_id: 1,
+                            comment_id: 1,
+                            seq_no: 1,
+                            reply_text: 1,
+                            audio_path: 1,
+                            createdAt: 1,
+                            updatedAt: 1,
+                            userName: "$user.userName",
+                            role: "$user.role",
+                        }
+                    }
+                ];
+
+                var replyObject = await Replies.aggregate(query);
+                val.reply = replyObject;
+                finalObject.push(val);
+            }
+            return finalObject;
         } catch (err) {
             console.log(err);
             return utils.sendErrorNew(req, res, 'BAD_REQUEST', err.message);

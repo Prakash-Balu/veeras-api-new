@@ -82,3 +82,21 @@
  *       '500':
  *         description: Server Error
  */
+
+/**
+ * @swagger
+ * /comments/viewComment:
+ *   get:
+ *     tags:
+ *       - Comments
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name : segmentId
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: Success
+ */
