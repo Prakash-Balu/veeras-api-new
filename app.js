@@ -28,20 +28,21 @@ module.exports = (async () => {
     const auth = require('./routes/auth')(mongoose, utils, constants);
     const user = require('./routes/user')(mongoose, utils, constants);
     const location = require('./routes/admin/location-price')(mongoose, utils, constants);
-    const userlocation = require('./routes/location-price')(mongoose, utils, constants);
+    const userLocation = require('./routes/location-price')(mongoose, utils, constants);
     const comments = require('./routes/comments')(mongoose, utils, constants);
     const segments = require('./routes/segments')(mongoose, utils, constants);
     const plan = require('./routes/plan')(mongoose, utils, constants);
+    const adminPlan = require('./routes/admin/plan')(mongoose, utils, constants);
 
     app.get('/', (req, res) => {
         res.status(200).json({ message: "Health is Ok" })
     })
     app.use('/auth', auth);
     app.use('/user', user);
-    app.use('/location', location, userlocation);
+    app.use('/location', location, userLocation);
     app.use('/comments', comments);
     app.use('/segments', segments);
-    app.use('/plan', plan)
+    app.use('/plan', plan, adminPlan)
 
     // Serve Swagger documentation
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
