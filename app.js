@@ -33,6 +33,7 @@ module.exports = (async () => {
     const segments = require('./routes/segments')(mongoose, utils, constants);
     const plan = require('./routes/plan')(mongoose, utils, constants);
     const adminPlan = require('./routes/admin/plan')(mongoose, utils, constants);
+    const adminSegments = require('./routes/admin/segments')(mongoose, utils, constants);
 
     app.get('/', (req, res) => {
         res.status(200).json({ message: "Health is Ok" })
@@ -41,7 +42,7 @@ module.exports = (async () => {
     app.use('/user', user);
     app.use('/location', location, userLocation);
     app.use('/comments', comments);
-    app.use('/segments', segments);
+    app.use('/segments', segments, adminSegments);
     app.use('/plan', plan, adminPlan)
 
     // Serve Swagger documentation
